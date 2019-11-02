@@ -8,6 +8,7 @@ or has the amp attribute -->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <title>Dev Fest - AMP</title>
     <link
       rel="shortcut icon"
@@ -80,8 +81,14 @@ or has the amp attribute -->
       }
 
       .social-bar {
+        align-items: center;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+      }
+
+      h3,
+      .success {
+        color: #3caab7;
       }
 
     </style>
@@ -110,13 +117,27 @@ or has the amp attribute -->
 
           <h3 class="main-heading">Volando con el Assistant</h3>
           <p class="main-text">
-            Auditorio 1 - 10:30 - 11:00 am
+            Auditorio 1 - 5:30 - 6:00 pm
           </p>
         </div>
         <div class="social-bar">
-          Follow me in Twitter&nbsp;<a href="https://twitter.com/malvarezcr">@malvarezcr</a>
+          Sigueme en Twitter&nbsp;
+         
+
+          <amp-state id="wasPressed">
+            <script type="application/json">
+              true
+            </script>
+          </amp-state>
+          <a href="https://twitter.com/malvarezcr" target="_blank" on="tap:AMP.setState({ wasPressed: false })">
+            @malvarezcr
+          </a>
+
+          <p hidden [hidden]="wasPressed"  class="success">Clicked!</p>
+          
         </div>
       </div>
+
     </main>
   </body>
 </html>
